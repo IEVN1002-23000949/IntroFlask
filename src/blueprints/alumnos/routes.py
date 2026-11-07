@@ -12,7 +12,7 @@ def fila_a_diccionario(cursor, fila):
     columnas=[columna[0] for columna in cursor.description]
     return dict(zip(columnas,fila))
 
-@alumnos_bp.route("/",methods=['GET'])
+@alumnos_bp.route("/",methods=['GET'], strict_slashes=False)
 def lista_alumnos():
     try:
         cursor=mysql.connection.cursor()
@@ -59,7 +59,7 @@ def leer_alumno(matricula):
  
  
 #POST:Registrar un alumno
-@alumnos_bp.route('/', methods=['POST'])
+@alumnos_bp.route('/', methods=['POST'], strict_slashes=False)
 def registrar_alumno():
     datos = request.get_json(silent=True)
  
